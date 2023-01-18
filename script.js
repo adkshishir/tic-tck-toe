@@ -5,6 +5,11 @@ const xClass = "x";
 let countXwins = 0;
 let countYwins = 0;
 
+let nameX = prompt("enter name of player 1");
+let nameO = prompt("enter name of player 2");
+nameX.toUpperCase();
+nameO.toUpperCase();
+
 const winningMessageTextElement = document.querySelector(
   "[ data-winning-mesage-text]"
 );
@@ -32,6 +37,9 @@ const startGame = () => {
   cellElement.forEach((cell) => {
     circleTurn = false;
     cell.classList.remove(xClass);
+    document.getElementById("Turns").innerHTML = circleTurn
+      ? `${nameO}'s Turn`
+      : `${nameX}'s Turn`;
     cell.classList.remove(circleClass);
     cell.removeEventListener("click", handleClick);
     cell.addEventListener("click", handleClick, { once: true });
@@ -40,13 +48,14 @@ const startGame = () => {
   winningMessageElement.classList.remove("show");
   document.getElementById(
     "winningsDisplay"
-  ).innerHTML = `O'wins=${countYwins}  :::  X'wins=${countXwins}`;
+  ).innerHTML = `<div>${nameO} wins:${countYwins} </div> <div>${nameX} wins:${countXwins}</div>`;
 };
 restartButton.addEventListener("click", startGame);
 startGame();
 function handleClick(e) {
   const cell = e.target;
   const currentClass = circleTurn ? circleClass : xClass;
+
   placeMark(cell, currentClass);
   if (checkWin(currentClass)) {
     endGame(false);
@@ -64,7 +73,9 @@ function endGame(draw) {
   if (draw) {
     winningMessageTextElement.innerText = "draw!";
   } else {
-    winningMessageTextElement.innerText = circleTurn ? "O'wins" : "X'Wins";
+    winningMessageTextElement.innerText = circleTurn
+      ? `${nameO} wins!`
+      : `${nameX} wins!`;
     circleTurn ? countYwins++ : countXwins++;
   }
   winningMessageElement.classList.add("show");
@@ -78,6 +89,9 @@ function isDraw() {
 }
 function placeMark(cell, currentClass) {
   cell.classList.add(currentClass);
+  document.getElementById("Turns").innerHTML = circleTurn
+    ? `${nameX} Turns`
+    : `${nameO} Turns`;
 }
 const swapTurns = () => (circleTurn = !circleTurn);
 
