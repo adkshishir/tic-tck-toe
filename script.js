@@ -38,8 +38,8 @@ const startGame = () => {
     circleTurn = false;
     cell.classList.remove(xClass);
     document.getElementById("Turns").innerHTML = circleTurn
-      ? `${nameO}'s Turn`
-      : `${nameX}'s Turn`;
+      ? `${nameO} Turn`
+      : `${nameX} Turn`;
     cell.classList.remove(circleClass);
     cell.removeEventListener("click", handleClick);
     cell.addEventListener("click", handleClick, { once: true });

@@ -121,8 +121,8 @@ body {
 }
 .winning-message button:hover {
   background-color: black;
-  color: white;
-  border: 1px solid white;
+  color: rgb(160, 222, 255);
+  border: 1px solid rgba(255, 0, 0, 0.83);
 }
 .winning-message.show {
   display: flex;
@@ -130,8 +130,8 @@ body {
 .winning-display {
   display: flex;
   justify-content: center;
-  background-color: rgba(30, 30, 30, 0.773);
-  color: rgb(255, 255, 255);
+  background-color: rgba(40, 37, 62, 0.773);
+  color: rgb(255, 190, 190);
 
   padding: 10px;
   font-size: xx-large;
